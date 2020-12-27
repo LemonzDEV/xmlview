@@ -30,14 +30,22 @@ files with `<?xml-stylesheet type="text/xsl" href="xv-browser.xsl"?>`
 
 ### Dev Install and Testing
 
--   Install [NodeJS v9.1.0][]
--   Run these commands:
+-   Install [NodeJS v9.1.0][] and **Python**, if you have not
+-   Run this commands: `npm install -g gulp`
+-   Clone the repository
+-   Go into the cloned repo folder
+-   Run `npm install` and wait
+-   Run `gulp chrome` to build the package
+-   Go to the next step, **Installation**
 
 ### Installation
 
 #### Chrome
 
--   Got to chrome://extensions/ and Enable XV - XML Viewer. If you want
+-   Got to chrome://extensions/
+-   Enable the **Developer Mode**
+-   Click the `Load Unpacked` button and open the folder `dist/chrome`
+-   Enable XV - XML Viewer. If you want
     the viewer to automatically process XML feeds, Click on Options and
     tick the box <strong>Intercept requests for XML, RSS and ATOM
     documents</strong>
