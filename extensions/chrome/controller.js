@@ -1,11 +1,7 @@
 /**
  * @include "../../src/signals.js"
  */
-
-const fallbackDomain = 'sup.emmet.io';
-const carbonUrl = 'https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=emmetreview';
-const fallbackUrl = carbonUrl.replace(/^(\w+:\/\/)([^\/]+)/, '$1' + fallbackDomain) + '&cd=' + fallbackDomain;
-
+ 
 xv_settings = {
 	_data: {},
 	getValue: function(name, default_value) {
@@ -183,9 +179,6 @@ function doTransform(data) {
 				// Track UI events
 				document.addEventListener('input', trackingEventHandler);
 				document.addEventListener('click', trackingEventHandler);
-
-				// Add CarbonAds
-				setTimeout(() => addAds(document), 10);
 			});
 		}
 	);
@@ -232,28 +225,7 @@ function renderPage(url) {
 	xhr.send();
 }
 
-function addAds(parent) {
-	const target = parent.querySelector('.xv-outline-footer');
-	if (target) {
-		const mainScript = createAdsScript(carbonUrl);
-		mainScript.onerror = function() {
-			mainScript.remove();
-			target.appendChild(createAdsScript(fallbackUrl));
-		}
-		target.appendChild(mainScript);
-	}
-}
-
-function createAdsScript(src) {
-	const script = document.createElement('script');
-	script.async = true;
-	script.id = "_carbonads_js";
-	script.src = src;
-
-	return script;
-}
-
-// this code will be executed twice since original document will be replaced
+// this code will be executed twice since original document will be replaced 
 // with Chrome's XML tree viewer. The real XML doc will have 'interactive' state,
 // but replaced doc will have 'complete' state
 document.addEventListener('readystatechange', function() {
